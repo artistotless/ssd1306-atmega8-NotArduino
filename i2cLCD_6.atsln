@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "i2cLCD_6", "i2cLCD_6.cproj", "{9E29770C-4B8F-4440-9330-0D30D8BB3702}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E29770C-4B8F-4440-9330-0D30D8BB3702}.Debug|AVR.ActiveCfg = Debug|AVR
+		{9E29770C-4B8F-4440-9330-0D30D8BB3702}.Debug|AVR.Build.0 = Debug|AVR
+		{9E29770C-4B8F-4440-9330-0D30D8BB3702}.Release|AVR.ActiveCfg = Release|AVR
+		{9E29770C-4B8F-4440-9330-0D30D8BB3702}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
