@@ -115,6 +115,9 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ascii.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="LCD_I2C.h">
       <SubType>compile</SubType>
     </Compile>

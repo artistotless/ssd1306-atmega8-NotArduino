@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+ascii.c
+
 main.c
 
 ssd1306.c

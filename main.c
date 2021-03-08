@@ -12,6 +12,9 @@
 #include <stdlib.h>
 #include "twi.h"
 #include "LCD_I2C.h"
+#include <string.h>
+
+
 
 
 
@@ -73,12 +76,12 @@ int main(void)
 
 	//Выбор режима адресации - горизонтальный
 	lcdSendCommand(0x20);
-	lcdSendCommand(0x0);
+	lcdSendCommand(2);
 
 	// Выбор столбца
 	//lcdSelectSeg(0,39);
-	lcdSelectSeg(10,110);
-
+	lcdSelectSeg(1,110);
+	
 	//Выбор страницы
 	//lcdSelectPage(3,7);
 	lcdSelectPage(3,3);
@@ -93,34 +96,44 @@ int main(void)
 
 	//lcdBufferDisplay();
 
+char strp[11];
+int temp = TWSR;
 
-	for(int i = 0;i<14; i++ ){
-	lcdSendData(color);
-	delay(smooth);
-	lcdSendData(color);
-	delay(smooth);
-	lcdSendData(0);
-	lcdSendData(0);
-	delay(smooth);
-	lcdSendData(color);
-	delay(smooth);
-	lcdSendData(color);
-	
-	if(i == 13){
-		
-	i=0;
-	if(color == 0xFF){
-PORTD &= (0<<1);
-	color = 0x00;
-	smooth = 2;
-	}else{
-		PORTD |= (1<<1);
-	color = 0xFF;
-	smooth = 2;
-	}
-	lcdSelectSeg(10,110);
-	}
-	}
+
+sprintf(strp,"%d",temp);
+
+lcdTextDisplay("Testirovanie displeya test test");
+	//lcdSendData(TWSR);
+	//lcdSendData(0x00);
+	//lcdSendData(0xFF);
+
+	//for(int i = 0;i<14; i++ ){
+	//lcdSendData(color);
+	//delay(smooth);
+	//lcdSendData(color);
+	//delay(smooth);
+	//lcdSendData(0);
+	//lcdSendData(0);
+	//delay(smooth);
+	//lcdSendData(color);
+	//delay(smooth);
+	//lcdSendData(color);
+	//
+	//if(i == 13){
+	//
+	//i=0;
+	//if(color == 0xFF){
+	//PORTD &= (0<<1);
+	//color = 0x00;
+	//smooth = 2;
+	//}else{
+	//PORTD |= (1<<1);
+	//color = 0xFF;
+	//smooth = 2;
+	//}
+	//lcdSelectSeg(10,110);
+	//}
+	//}
 
 
 	while(1)
