@@ -80,7 +80,7 @@ int main(void)
 
 	// Выбор столбца
 	//lcdSelectSeg(0,39);
-	lcdSelectSeg(1,110);
+	lcdSelectSeg(10,110);
 	
 	//Выбор страницы
 	//lcdSelectPage(3,7);
@@ -96,44 +96,60 @@ int main(void)
 
 	//lcdBufferDisplay();
 
-char strp[11];
-int temp = TWSR;
+	char strp[11];
+	int temp = 0;
 
 
-sprintf(strp,"%d",temp);
+	
 
-lcdTextDisplay("Testirovanie displeya test test");
-	//lcdSendData(TWSR);
-	//lcdSendData(0x00);
-	//lcdSendData(0xFF);
+	lcdTextDisplay("a t m e g a 8");
 
-	//for(int i = 0;i<14; i++ ){
-	//lcdSendData(color);
-	//delay(smooth);
-	//lcdSendData(color);
-	//delay(smooth);
-	//lcdSendData(0);
-	//lcdSendData(0);
-	//delay(smooth);
-	//lcdSendData(color);
-	//delay(smooth);
-	//lcdSendData(color);
-	//
-	//if(i == 13){
-	//
-	//i=0;
-	//if(color == 0xFF){
-	//PORTD &= (0<<1);
-	//color = 0x00;
-	//smooth = 2;
-	//}else{
-	//PORTD |= (1<<1);
-	//color = 0xFF;
-	//smooth = 2;
-	//}
-	//lcdSelectSeg(10,110);
-	//}
-	//}
+	lcdSelectPage(5,5);
+	lcdSelectSeg(10,110);
+	int signal = 1;
+	for(int i = 0;i<=18; i++ ){
+		lcdSendData(color);
+		delay(smooth);
+		lcdSendData(color);
+		delay(smooth);
+		lcdSendData(0);
+		lcdSendData(0);
+		delay(smooth);
+
+		
+		if(i == 17){
+			lcdSelectPage(1,1);
+			lcdSelectSeg(120,120);
+			if(signal==1){
+			lcdSendData(0x18);
+			signal=0;
+			}else{
+			lcdSendData(0x00);
+			signal=1;
+			}
+			lcdSelectSeg(10,110);
+			
+			lcdTextDisplay("Loading: ");
+			lcdTextDisplay(strp);
+			if(temp < 100){temp++;}
+			if(temp>=100){temp=0;}
+			sprintf(strp,"%d",temp);
+			lcdTextDisplay("%");
+			
+			i=0;
+			if(color == 0xFF){
+				PORTD &= (0<<1);
+				color = 0x00;
+				smooth = 2;
+				}else{
+				PORTD |= (1<<1);
+				color = 0xFF;
+				smooth = 2;
+			}
+			lcdSelectSeg(10,110);
+			lcdSelectPage(5,5);
+		}
+	}
 
 
 	while(1)
